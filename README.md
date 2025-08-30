@@ -292,7 +292,7 @@ A: 检查文件大小限制和存储目录权限。
 - 项目维护者: [WuhuPan]
 - 邮箱: [2773243879@qq.com]
 - 项目链接: [https://github.com/PanJitao/Python-based-CRM]
-- Demo地址: [https://crm.wuhupan.top]
+- Demo地址: [http://crm.wuhupan.top]
 
 ## 更新日志
 
