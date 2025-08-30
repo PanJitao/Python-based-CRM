@@ -289,9 +289,9 @@ A: 检查文件大小限制和存储目录权限。
 
 ## 联系方式
 
-- 项目维护者: [Your Name]
-- 邮箱: [your.email@example.com]
-- 项目链接: [https://github.com/yourusername/LocalCRM2.0]
+- 项目维护者: [WuhuPan]
+- 邮箱: [2773243879@qq.com]
+- 项目链接: [https://github.com/PanJitao/Python-based-CRM]
 
 ## 更新日志
 
