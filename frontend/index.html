@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalCRM 2.0 - 本地CRM销售平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 登录页面 -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1><i class="fas fa-chart-line"></i> LocalCRM 2.0</h1>
+                    <p>本地CRM销售管理平台</p>
+                </div>
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-sign-in-alt"></i> 登录
+                    </button>
+                </form>
+                <div class="login-footer">
+                    <p>还没有账户？<a href="#" id="showRegister">立即注册</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 注册页面 -->
+    <div id="registerPage" class="page">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1><i class="fas fa-user-plus"></i> 用户注册</h1>
+                    <p>创建您的CRM账户</p>
+                </div>
+                <form id="registerForm" class="login-form">
+                    <div class="form-group">
+                        <label for="regUsername">用户名</label>
+                        <input type="text" id="regUsername" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">邮箱</label>
+                        <input type="email" id="regEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regRealName">真实姓名</label>
+                        <input type="text" id="regRealName" name="real_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">电话</label>
+                        <input type="tel" id="regPhone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="regDepartment">部门</label>
+                        <input type="text" id="regDepartment" name="department">
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">密码</label>
+                        <input type="password" id="regPassword" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPassword">确认密码</label>
+                        <input type="password" id="regConfirmPassword" name="confirm_password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-user-plus"></i> 注册
+                    </button>
+                </form>
+                <div class="login-footer">
+                    <p>已有账户？<a href="#" id="showLogin">立即登录</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主应用页面 -->
+    <div id="mainApp" class="page">
+        <!-- 顶部导航栏 -->
+        <header class="navbar">
+            <div class="navbar-brand">
+                <i class="fas fa-chart-line"></i>
+                <span>LocalCRM 2.0</span>
+            </div>
+            <nav class="navbar-nav">
+                <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> 仪表盘
+                </a>
+                <a href="#customers" class="nav-link" data-page="customers">
+                    <i class="fas fa-users"></i> 客户管理
+                </a>
+                <a href="#quotes" class="nav-link" data-page="quotes">
+                    <i class="fas fa-file-invoice"></i> 报价管理
+                </a>
+                <a href="#contracts" class="nav-link" data-page="contracts">
+                    <i class="fas fa-file-contract"></i> 合同管理
+                </a>
+                <a href="#orders" class="nav-link" data-page="orders">
+                    <i class="fas fa-shopping-cart"></i> 订单管理
+                </a>
+            </nav>
+            <div class="navbar-user">
+                <div class="user-dropdown">
+                    <button class="user-btn" id="userMenuBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="currentUserName">用户</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu" id="userDropdown">
+                        <a href="#profile" class="dropdown-item">
+                            <i class="fas fa-user"></i> 个人资料
+                        </a>
+                        <a href="#settings" class="dropdown-item">
+                            <i class="fas fa-cog"></i> 设置
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> 退出登录
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <!-- 仪表盘页面 -->
+            <div id="dashboardPage" class="content-page">
+                <div class="page-header">
+                    <h1><i class="fas fa-tachometer-alt"></i> 仪表盘</h1>
+                    <p>欢迎使用LocalCRM 2.0销售管理平台</p>
+                </div>
+                
+                <!-- 统计卡片 -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalCustomers">0</h3>
+                            <p>总客户数</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-invoice"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalQuotes">0</h3>
+                            <p>总报价数</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalContracts">0</h3>
+                            <p>总合同数</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalOrders">0</h3>
+                            <p>总订单数</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快速操作 -->
+                <div class="quick-actions">
+                    <h2>快速操作</h2>
+                    <div class="action-grid">
+                        <button class="action-btn" data-action="add-customer">
+                            <i class="fas fa-user-plus"></i>
+                            <span>添加客户</span>
+                        </button>
+                        <button class="action-btn" data-action="create-quote">
+                            <i class="fas fa-file-plus"></i>
+                            <span>创建报价</span>
+                        </button>
+                        <button class="action-btn" data-action="create-contract">
+                            <i class="fas fa-file-signature"></i>
+                            <span>创建合同</span>
+                        </button>
+                        <button class="action-btn" data-action="create-order">
+                            <i class="fas fa-cart-plus"></i>
+                            <span>创建订单</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 最近活动 -->
+                <div class="recent-activities">
+                    <h2>最近活动</h2>
+                    <div class="activity-list" id="recentActivities">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p>欢迎使用LocalCRM 2.0！</p>
+                                <span class="activity-time">刚刚</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 客户管理页面 -->
+            <div id="customersPage" class="content-page">
+                <div class="page-header">
+                    <h1><i class="fas fa-users"></i> 客户管理</h1>
+                    <button class="btn btn-primary" id="addCustomerBtn">
+                        <i class="fas fa-plus"></i> 添加客户
+                    </button>
+                </div>
+                
+                <!-- 搜索和筛选 -->
+                <div class="filters">
+                    <div class="search-box">
+                        <input type="text" id="customerSearch" placeholder="搜索客户...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <select id="customerStatusFilter">
+                        <option value="">所有状态</option>
+                        <option value="active">活跃</option>
+                        <option value="inactive">非活跃</option>
+                        <option value="potential">潜在客户</option>
+                    </select>
+                    <select id="customerTypeFilter">
+                        <option value="">所有类型</option>
+                        <option value="individual">个人</option>
+                        <option value="company">企业</option>
+                    </select>
+                </div>
+
+                <!-- 客户列表 -->
+                <div class="data-table">
+                    <table id="customersTable">
+                        <thead>
+                            <tr>
+                                <th>客户名称</th>
+                                <th>公司</th>
+                                <th>联系人</th>
+                                <th>电话</th>
+                                <th>邮箱</th>
+                                <th>状态</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customersTableBody">
+                            <!-- 客户数据将通过JavaScript动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 分页 -->
+                <div class="pagination" id="customersPagination">
+                    <!-- 分页控件将通过JavaScript动态生成 -->
+                </div>
+            </div>
+
+            <!-- 其他页面占位符 -->
+            <div id="quotesPage" class="content-page">
+                <div class="page-header">
+                    <h1><i class="fas fa-file-invoice"></i> 报价管理</h1>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> 创建报价
+                    </button>
+                </div>
+                <p>报价管理功能正在开发中...</p>
+            </div>
+
+            <div id="contractsPage" class="content-page">
+                <div class="page-header">
+                    <h1><i class="fas fa-file-contract"></i> 合同管理</h1>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> 创建合同
+                    </button>
+                </div>
+                <p>合同管理功能正在开发中...</p>
+            </div>
+
+            <div id="ordersPage" class="content-page">
+                <div class="page-header">
+                    <h1><i class="fas fa-shopping-cart"></i> 订单管理</h1>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> 创建订单
+                    </button>
+                </div>
+                <p>订单管理功能正在开发中...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- 模态框容器 -->
+    <div id="modalContainer"></div>
+
+    <!-- 通知容器 -->
+    <div id="notificationContainer"></div>
+
+    <!-- JavaScript文件和页面初始化脚本 -->
+    <script>
+        (function() {
+            const scripts = [
+                'js/config.js',
+                'js/utils.js',
+                'js/ui.js',
+                'js/api.js',
+                'js/auth.js',
+                'js/dashboard.js',
+                'js/customers.js',
+                'js/app.js'
+            ];
+            const timestamp = new Date().getTime();
+
+            function loadScript(src) {
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = `${src}?v=${timestamp}`;
+                    script.async = false; // Help ensure sequential loading
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    document.head.appendChild(script);
+                });
+            }
+
+            async function loadAllScripts() {
+                for (const src of scripts) {
+                    await loadScript(src);
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const mainApp = document.getElementById('mainApp');
+                const loginPage = document.getElementById('loginPage');
+
+                // 确保页面正确初始化
+                if (mainApp) {
+                    mainApp.classList.remove('active');
+                }
+                if (loginPage) {
+                    loginPage.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    document.body.style.height = '100vh';
+                }
+                
+                // Load all scripts sequentially, then initialize the application
+                loadAllScripts().then(() => {
+                    App.init();
+
+                    console.log('页面初始化完成');
+                    console.log('登录页面active:', loginPage ? loginPage.classList.contains('active') : 'not found');
+                    console.log('主应用active:', mainApp ? mainApp.classList.contains('active') : 'not found');
+                    console.log('页面高度:', document.body.scrollHeight, '视口高度:', window.innerHeight);
+                    console.log('是否可滚动:', document.body.scrollHeight > window.innerHeight);
+                }).catch(error => {
+                    console.error('Failed to load one or more scripts.', error);
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
