@@ -1,4 +1,4 @@
-# CRM销售平台 2.0
+# 基于Python-Flask的客户关系管理系统
 
 一个功能完整的客户关系管理（CRM）销售平台，基于Flask后端和原生JavaScript前端构建。
 
